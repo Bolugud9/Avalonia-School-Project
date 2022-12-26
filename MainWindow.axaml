@@ -1,0 +1,72 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Avalonia.MusicStore.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="400"
+        x:Class="MyApp.MainWindow"
+        Background="Black"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True"
+        Title="MyApp">
+
+
+        <StackPanel Margin="0,100,0,0" Width="300" Height="550">
+            <TextBlock FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,15">ANAGRAMS</TextBlock>
+            <TextBox BorderThickness="1" IsReadOnly="True" Text="{Binding Combinations,Mode=TwoWay}" Margin="5" Watermark="combinations" TextWrapping="Wrap"/>
+
+            <Grid Background="Transparent" ShowGridLines="True" Width="300" Height="50" HorizontalAlignment="Center" IsVisible ="{Binding !StartAgain}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Row="0" Width="45" Background="{Binding FirstPressedColor}" HorizontalContentAlignment="Center"  Grid.Column="0" VerticalAlignment="Center" Content="{Binding TextToFind[0]}" Command="{Binding Clicked}" CommandParameter="{Binding TextToFind[0]}"></Button>
+                <Button Grid.Row="0" Width="45" Background="{Binding SecondPressedColor}" HorizontalContentAlignment="Center"  Grid.Column="1" VerticalAlignment="Center" Content="{Binding TextToFind[1]}" Command="{Binding Clicked}" CommandParameter="{Binding TextToFind[1]}"></Button>
+                <Button Grid.Row="0" Width="45" Background="{Binding ThirdPressedColor}" HorizontalContentAlignment="Center"  Grid.Column="2" VerticalAlignment="Center" Content="{Binding TextToFind[2]}" Command="{Binding Clicked}" CommandParameter="{Binding TextToFind[2]}"></Button>
+                <Button Grid.Row="0" Width="45" Background="{Binding FourthPressedColor}" HorizontalContentAlignment="Center"  Grid.Column="3" VerticalAlignment="Center" Content="{Binding TextToFind[3]}" Command="{Binding Clicked}" CommandParameter="{Binding TextToFind[3]}"></Button>
+                <Button Grid.Row="0" Width="45" Background="{Binding FifthPressedColor}" HorizontalContentAlignment="Center"  Grid.Column="4" VerticalAlignment="Center" Content="{Binding TextToFind[4]}" Command="{Binding Clicked}" CommandParameter="{Binding TextToFind[4]}"></Button>
+                <Button Grid.Row="0" Width="45" Background="{Binding SixthPressedColor}" HorizontalContentAlignment="Center"  Grid.Column="5" VerticalAlignment="Center" Content="{Binding TextToFind[5]}" Command="{Binding Clicked}" CommandParameter="{Binding TextToFind[5]}"></Button>
+            </Grid>
+
+            <Grid Background="Transparent" ShowGridLines="True" Width="200" Height="50" HorizontalAlignment="Center" IsVisible ="{Binding !StartAgain}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Row="0" Width="90"   HorizontalContentAlignment="Center"  Grid.Column="0" VerticalAlignment="Center" Content="Submit" Command="{Binding SubmitWords}"></Button>
+                <Button Grid.Row="0" Width="90"  HorizontalContentAlignment="Center"  Grid.Column="1" VerticalAlignment="Center" Content="Clear" Command="{Binding ClearWords}"></Button>
+                
+            </Grid>
+
+            <Grid Background="Transparent" ShowGridLines="True" Width="300" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                     <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Width="90" FontSize="10" Grid.Column="0" TextAlignment="Center" Margin="15,0,0,0" Text="{Binding HighScoreDisplay}"></TextBlock>
+                <TextBlock Grid.Row="0" Width="90" FontSize="10" Grid.Column="1" TextAlignment="Center" Margin="15,0,0,0" Text="{Binding ScoreDisplay}"></TextBlock>
+                <TextBlock Grid.Row="0" Width="90" FontSize="10" Grid.Column="2" TextAlignment="Center" Margin="15,0,0,0" Text="{Binding TimeLeftDisplay}"></TextBlock>                
+            </Grid>
+
+            <Button HorizontalAlignment="Center" IsVisible ="{Binding StartAgain}" Command="{Binding PlayAgain}">Play Again</Button>
+            <TextBlock Width="200" FontSize="10" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,15,0,0" Text="{Binding Notification}"></TextBlock>
+
+           <ExperimentalAcrylicBorder IsHitTestVisible="False">
+               <ExperimentalAcrylicBorder.Material>
+                   <ExperimentalAcrylicMaterial
+                       BackgroundSource="Digger"
+                       TintColor="Black"
+                       TintOpacity="1"
+                       MaterialOpacity="0.65" />
+               </ExperimentalAcrylicBorder.Material>
+           </ExperimentalAcrylicBorder>
+       </StackPanel>
+</Window>
